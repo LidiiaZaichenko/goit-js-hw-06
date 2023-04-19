@@ -12,7 +12,7 @@ const body = document.body;
 
 buttonEL.addEventListener("click", () => {
   console.log("Button was clicked");
-  spanEL.textContent = getRandomHexColor();
-  body.style.backgroundColor = getRandomHexColor();
+  spanEL.textContent = body.style.backgroundColor = getRandomHexColor();
+
 });
 

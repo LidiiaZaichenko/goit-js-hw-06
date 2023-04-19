@@ -18,15 +18,33 @@ console.log(createButton);
 const destroyButton = document.querySelector('button[data-destroy]');
 console.log(destroyButton);
 
-const amount = 3;
-console.log(amount); 
-inputEL.addEventListener("input", () => {
-  const amount = inputEL.value;
-  console.log(amount);  
- });
 
-createButton.addEventListener("click",createBoxes);
-function createBoxes(amount) {
-  const newEl = document.createElement('div');
-  
+createButton.addEventListener("click",onCreateButtonClick);
+
+destroyButton.addEventListener("click",onDestroyButtonClick);
+
+function onDestroyButtonClick() {
+  boxesEL.innerHTML = " ";
+};
+
+function onCreateButtonClick() {
+  const amount = Number(inputEL.value);
+  console.log(amount);
+  createBoxes(amount);
+};
+
+function createBoxes(amount){
+  const divs = [];
+  let sizes = 30;
+  for (let i = 0; i <= amount-1; i+=1) {
+   const element = document.createElement('div');
+   element.style.width =sizes+'px';
+   element.style.height =sizes+'px';
+   element.style.backgroundColor = getRandomHexColor();
+   sizes+=10;
+   divs.push(element);
+   console.log(element);
+   console.log(divs);
+   boxesEL.append(...divs);
+  }
 }
